@@ -1,8 +1,8 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
 using namespace std;
 
 // Merges two subarrays of arr[].
@@ -88,8 +88,10 @@ void printArray(int A[], int size)
 /* Driver program to test above functions */
 int main()
 {
+    clock_t t;
     int arr[100];
     int n, i;
+    cout << "* MERGE SORT*" << endl;
     cout << "Enter the size of array to be sorted: " << endl;
     cin >> n;
     for (i = 0; i < n; i++)
@@ -98,12 +100,13 @@ int main()
     }
     printf("Given array is \n");
     printArray(arr, n);
-
+    t = clock();
     mergeSort(arr, 0, n - 1);
-
+    t = clock() - t;
     printf("\nSorted array is \n");
     printArray(arr, n);
     cout << endl;
+    cout << "time taken: " << ((float)t) / CLOCKS_PER_SEC << "seconds" << endl;
     cout << "Space complexity is: " << sizeof(arr[0]) * n + sizeof(n) + sizeof(i);
     return 0;
 }

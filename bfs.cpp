@@ -32,7 +32,8 @@ void BFS::read()
 
 void BFS::bfs()
 {
-    int u, v, f, r, s[10], q[10];
+    int u, v, f, r, q[10], t[20][2];
+    int k = 0;
     f = r = 0;
     for (int i = 0; i < n; i++)
     {
@@ -49,27 +50,37 @@ void BFS::bfs()
             {
                 s[v] = 1;
                 q[++r] = v;
+                t[k][1] = u;
+                t[k][2] = v;
+                cout << t[k][1] + 1 << " - " << t[k][2] + 1 << endl;
+                k++;
             }
         }
     }
 }
 void BFS::print_data()
 {
-    int i;
+    int i, count = 0;
     for (i = 0; i < n; i++)
     {
         if (s[i] == 1)
         {
             cout << "Node " << i << " is reachable" << endl;
+            count++;
         }
         else
         {
             cout << "Node " << i << " is not reachable" << endl;
         }
     }
+    if (count == n)
+    {
+        cout << "The graph is connected" << endl;
+    }
 }
 int main()
 {
+    cout << "BFS Traversal" << endl;
     BFS b;
     b.read();
     b.bfs();

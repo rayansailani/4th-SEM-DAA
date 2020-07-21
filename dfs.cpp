@@ -31,12 +31,16 @@ void DFS::read()
 }
 void DFS::dfs(int u, int *s)
 {
-    int v;
+    int v, t[20][2], k = 0;
     s[u] = 1;
     for (v = 0; v < n; v++)
     {
         if (adj[u][v] == 1 && s[v] == 0)
         {
+            t[k][1] = u;
+            t[k][2] = v;
+            cout << t[k][1] + 1 << " - " << t[k][2] + 1 << endl;
+            k++;
             dfs(v, s);
         }
     }
@@ -87,12 +91,13 @@ int DFS::connectivity()
         {
             return 1;
         }
-        }
+    }
     return 0;
 }
 int main()
 {
     DFS d;
+    cout << "DFS traversals:" << endl;
     d.read();
     d.reach();
     int flag = d.connectivity();

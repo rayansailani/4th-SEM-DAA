@@ -32,7 +32,6 @@ NODE insert(int item)
     par = NULL;
     while (cur != NULL)
     {
-        //cout<<"process reached"<<endl;
         par = cur;
         if (item < cur->data)
             cur = cur->left;

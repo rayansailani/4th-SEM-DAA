@@ -1,75 +1,88 @@
+#include <stdio.h>
 #include <iostream>
-#include <conio.h>
-#include <iomanip>
-using namespace std;
-class tsp
-{
-    int n, a[10][10], v[10];
+int ary[10][10], completed[10], n, cost = 0;
 
-public:
-    int cost;
-    void read_matrix();
-    void mincost(int);
-    int least(int);
-    tsp()
-    {
-        cost = 0;
-    }
-};
-void tsp::read_matrix()
+int least(int c)
 {
-    int i, j;
-    cout << "Enter the number of  nodes: " << endl;
-    cin >> n;
-    cout << "Enter the cost matrix: " << endl;
-    for (i = 0; i < n; i++)
-        for (j = 0; j < n; j++)
-        {
-            cin >> a[i][j];
-            v[i] = 0;
-        }
-}
-int tsp::least(int c)
-{
-    int i, nc = 999, min = 999, kmin;
+    int i, nc = 999;
+    int min = 999, kmin;
+
     for (i = 0; i < n; i++)
     {
-        if (a[c][i] != 0 && v[i] == 0)
-            if (a[c][i] + a[i][c] <= min)
+        if ((ary[c][i] != 0) && (completed[i] == 0))
+            if (ary[c][i] + ary[i][c] < min)
             {
-                min = a[i][0] + a[c][i];
+                min = ary[i][0] + ary[c][i];
+                kmin = ary[c][i];
                 nc = i;
-                kmin = a[c][i];
             }
     }
+
     if (min != 999)
         cost += kmin;
+
     return nc;
 }
-void tsp::mincost(int city)
+
+void takeInput()
+{
+    int i, j;
+
+    printf("Enter the number of villages: ");
+    scanf("%d", &n);
+
+    printf("\nEnter the Cost Matrix\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter Elements of Row: %d\n", i + 1);
+
+        for (j = 0; j < n; j++)
+            scanf("%d", &ary[i][j]);
+
+        completed[i] = 0;
+    }
+
+    printf("\n\nThe cost list is:");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\n");
+
+        for (j = 0; j < n; j++)
+            printf("\t%d", ary[i][j]);
+    }
+}
+
+void mincost(int city)
 {
     int i, ncity;
-    v[city] = 1;
-    cout << city + 1 << setw(5);
+
+    completed[city] = 1;
+
+    printf("%d--->", city + 1);
     ncity = least(city);
+
     if (ncity == 999)
     {
         ncity = 0;
-        cout << ncity + 1;
-        cost += a[city][ncity];
+        printf("%d", ncity + 1);
+        cost += ary[city][ncity];
+
         return;
     }
+
     mincost(ncity);
 }
+
 int main()
 {
-    int i, j, source;
-    tsp t;
-    t.read_matrix();
-    cout << "Enter the source city: " << endl;
-    cin >> source;
-    cout << "Sequence of cities visited: " << endl;
-    t.mincost(source);
-    cout << endl
-         << "The minimum cost is: " << t.cost << endl;
+    takeInput();
+
+    printf("\n\nThe Path is:\n");
+    mincost(0); //passing 0 because starting vertex
+
+    printf("\n\nMinimum cost is %d\n ", cost);
+
+    return 0;
 }

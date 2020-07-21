@@ -1,0 +1,110 @@
+inputs of BFS
+bfs.cpp
+5
+0 1 1 0 0
+1 0 0 1 1
+1 0 0 0 0
+0 1 0 0 0
+0 1 0 0 0
+0
+
+inputs of DFS
+dfs.cpp
+7   
+0 1 1 1 1 0 0
+1 0 0 1 0 1 0
+1 0 0 0 0 0 1
+1 1 0 0 0 1 0
+1 0 0 0 0 0 1
+0 1 0 1 0 0 0
+0 0 1 0 1 0 0
+
+input of topological sort:
+topo.cpp
+5
+0 0 1 0 0
+0 0 1 0 0
+0 0 0 1 1
+0 0 0 0 1
+0 0 0 0 0
+
+inputs of Warshall's algorithm:
+warshall.cpp
+4
+0 0 0 1
+1 1 1 1
+1 1 0 1 
+0 0 0 0
+
+Floyd's algorithm:
+floyd.cpp
+4
+0 999 3 999
+2 0 999 999
+999 7 0 1
+6 999 999 0
+
+input for prim's algorithm:
+prims.cpp
+6 
+0 60 10 999 999 999 
+60 0 999 20 40 70
+10 999 0 999 999 50
+999 20 999 0 999 80
+999 40 999 999 0 30
+999 70 50 80 30 0
+
+input for kruskal's algorithm:
+kruskals.cpp
+8
+11
+1 4 5
+5 6 10
+4 6 15
+3 4 20
+0 2 25
+3 7 30
+4 5 35
+2 4 40
+0 3 45
+6 7 50
+0 1 55
+
+input for tsp problem:
+tsp.cpp
+4
+0 10 15 20
+5 0 9 10
+6 13 0 12
+8 8 9 0
+
+4
+0 30 6 4
+30 0 5 10
+6 5 0 20
+4 10 20 0
+
+input for dijkstra's algorithm:
+dijkstra.cpp
+6
+0 15 10 999 45 999
+999 0 15 999 20 999
+20 999 0 20 999 999
+999 10 999 0 35 999
+999 999 999 30 0 999
+999 999 999 4 999 0
+
+nqueens:
+nqueen.cpp
+
+mergesort:
+mergeSort.cpp
+
+heapsort.cpp:
+heap.cpp
+
+knapsack problem: 
+knapsack.cpp
+
+horsepool string matching: 
+horsepool.cpp
